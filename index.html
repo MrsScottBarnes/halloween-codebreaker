@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='UTF-8'>
+<title>Halloween Escape Lock</title>
+<style>
+body{margin:0;height:100vh;display:flex;justify-content:center;align-items:center;background:linear-gradient(#120018,#2b124c,#000);font-family:Trebuchet MS,sans-serif;color:white;overflow:hidden}
+.card{background:rgba(0,0,0,.75);padding:30px;border-radius:25px;text-align:center;max-width:600px;box-shadow:0 0 40px orange}
+h1{color:#ff9d00}
+input{font-size:28px;padding:12px;text-align:center;width:220px;border-radius:10px}
+button{margin-top:15px;padding:12px 24px;font-size:18px;background:#ff9d00;border:none;border-radius:12px;cursor:pointer}
+#result{margin-top:20px;font-size:24px;font-weight:bold}
+.ghost{position:absolute;font-size:40px;animation:float 8s linear infinite;opacity:.5}
+@keyframes float{from{transform:translateY(120vh)}to{transform:translateY(-120px)}}
+.blink{animation:blink 1s infinite}
+@keyframes blink{50%{opacity:.5}}
+</style>
+</head>
+<body>
+<div class='ghost' style='left:10%'>👻</div>
+<div class='ghost' style='left:30%;animation-duration:11s'>🎃</div>
+<div class='ghost' style='left:70%;animation-duration:9s'>🦇</div>
+<div class='ghost' style='left:90%;animation-duration:13s'>👻</div>
+<div class='card'>
+<h1>🎃 Halloween Maths Codebreaker 🎃</h1>
+<p>The witch has locked the school! Enter the 6-digit code to escape before midnight.</p>
+<input id='code' maxlength='6' placeholder='Enter Code'>
+<br>
+<button onclick='checkCode()'>🔓 Unlock</button>
+<div id='result'></div>
+</div>
+<script>
+const correctCode='159762';
+function checkCode(){
+ let r=document.getElementById('result');
+ if(document.getElementById('code').value.trim()===correctCode){
+ r.innerHTML="🏆 <span class='blink'>THE CURSE IS BROKEN!</span><br><br>Congratulations! You escaped the haunted school and earned <span style='color:gold'>100 HOUSE POINTS</span> for your team! 🎃👻";
+ r.style.color='lightgreen';
+ } else {
+ r.innerHTML='👻 Wrong code... The ghosts are still watching. Check your maths and try again!';
+ r.style.color='#ff7b7b';
+ }
+}
+</script>
+</body>
+</html>
